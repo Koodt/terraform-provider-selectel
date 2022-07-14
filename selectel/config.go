@@ -1,7 +1,6 @@
 package selectel
 
 import (
-	"errors"
 	"strings"
 
 	"github.com/gophercloud/utils/terraform/auth"
@@ -20,9 +19,6 @@ type Config struct {
 
 // Validate performs config validation.
 func (c *Config) Validate() error {
-	if c.selectel_token == "" {
-		return errors.New("token must be specified")
-	}
 	if c.gophercloud_auth.IdentityEndpoint == "" {
 		c.gophercloud_auth.IdentityEndpoint = strings.Join([]string{resell.Endpoint, resellV2.APIVersion}, "/")
 	}

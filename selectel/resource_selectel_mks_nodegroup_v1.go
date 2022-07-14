@@ -515,15 +515,15 @@ func resourceMKSNodegroupV1Delete(ctx context.Context, d *schema.ResourceData, m
 
 func resourceMKSNodegroupV1ImportState(_ context.Context, d *schema.ResourceData, meta interface{}) ([]*schema.ResourceData, error) {
 	config := meta.(*Config)
-	if config.ProjectID == "" {
+	if config.gophercloud_auth.TenantID == "" {
 		return nil, errors.New("SEL_PROJECT_ID must be set for the resource import")
 	}
-	if config.Region == "" {
+	if config.gophercloud_auth.Region == "" {
 		return nil, errors.New("SEL_REGION must be set for the resource import")
 	}
 
-	d.Set("project_id", config.ProjectID)
-	d.Set("region", config.Region)
+	d.Set("project_id", config.gophercloud_auth.TenantID)
+	d.Set("region", config.gophercloud_auth.Region)
 
 	return []*schema.ResourceData{d}, nil
 }

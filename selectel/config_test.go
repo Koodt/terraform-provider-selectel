@@ -3,13 +3,16 @@ package selectel
 import (
 	"testing"
 
+	"github.com/gophercloud/utils/terraform/auth"
 	"github.com/stretchr/testify/assert"
 )
 
 func TestValidate(t *testing.T) {
 	config := &Config{
-		Token:  "secret",
-		Region: "ru-3",
+		selectel_token: "secret",
+		gophercloud_auth: auth.Config{
+			Region: "ru-3",
+		},
 	}
 
 	err := config.Validate()
@@ -29,8 +32,10 @@ func TestValidateNoToken(t *testing.T) {
 
 func TestValidateErrRegion(t *testing.T) {
 	config := &Config{
-		Token:  "secret",
-		Region: "unknown region",
+		selectel_token: "secret",
+		gophercloud_auth: auth.Config{
+			Region: "unknown region",
+		},
 	}
 
 	expected := "region is invalid: unknown region"

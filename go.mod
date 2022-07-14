@@ -21,7 +21,8 @@ require (
 	github.com/fatih/color v1.7.0 // indirect
 	github.com/golang/protobuf v1.4.2 // indirect
 	github.com/google/go-cmp v0.5.6 // indirect
-	github.com/gophercloud/gophercloud v0.17.0 // indirect
+	github.com/gophercloud/gophercloud v0.20.0 // indirect
+	github.com/gophercloud/utils v0.0.0-20220704184730-55bdbbaec4ba // indirect
 	github.com/hashicorp/errwrap v1.0.0 // indirect
 	github.com/hashicorp/go-checkpoint v0.5.0 // indirect
 	github.com/hashicorp/go-cleanhttp v0.5.2 // indirect
@@ -44,6 +45,7 @@ require (
 	github.com/mattn/go-colorable v0.1.4 // indirect
 	github.com/mattn/go-isatty v0.0.10 // indirect
 	github.com/mitchellh/copystructure v1.2.0 // indirect
+	github.com/mitchellh/go-homedir v1.1.0 // indirect
 	github.com/mitchellh/go-testing-interface v1.14.1 // indirect
 	github.com/mitchellh/go-wordwrap v1.0.0 // indirect
 	github.com/mitchellh/mapstructure v1.1.2 // indirect
@@ -60,5 +62,6 @@ require (
 	google.golang.org/genproto v0.0.0-20200711021454-869866162049 // indirect
 	google.golang.org/grpc v1.32.0 // indirect
 	google.golang.org/protobuf v1.25.0 // indirect
+	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.0-20200313102051-9f266ea9e77c // indirect
 )

@@ -435,11 +435,8 @@ func configureProvider(d *schema.ResourceData, terraformVersion string) (interfa
 		},
 		selectel_token: d.Get("selectel_token").(string),
 	}
-	if v, ok := d.GetOk("project_id"); ok {
+	if v, ok := d.GetOk("tenant_id"); ok {
 		config.gophercloud_auth.TenantID = v.(string)
-	}
-	if v, ok := d.GetOk("selectel_region"); ok {
-		config.gophercloud_auth.Region = v.(string)
 	}
 	if err := config.Validate(); err != nil {
 		return nil, diag.FromErr(err)

@@ -17,7 +17,7 @@ func dataSourceDBaaSAvailableExtensionV1() *schema.Resource {
 	return &schema.Resource{
 		ReadContext: dataSourceDBaaSAvailableExtensionV1Read,
 		Schema: map[string]*schema.Schema{
-			"project_id": {
+			"tenant_id": {
 				Type:     schema.TypeString,
 				Required: true,
 			},

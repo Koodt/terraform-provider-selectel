@@ -4,7 +4,6 @@ import (
 	"context"
 	"crypto/md5"
 	"fmt"
-	"log"
 	"math/rand"
 	"sort"
 	"strconv"
@@ -47,14 +46,7 @@ func getDBaaSV1Endpoint(region string) (endpoint string) {
 }
 
 func getDBaaSClient(ctx context.Context, d *schema.ResourceData, meta interface{}) (*dbaas.API, diag.Diagnostics) {
-	config := meta.(*Config)
-	resellV2Client := config.resellV2Client()
-	tokenOpts := tokens.TokenOpts{
-		ProjectID: d.Get("project_id").(string),
-	}
-
-	log.Print(msgCreate(objectToken, tokenOpts))
-	token, _, err := tokens.Create(ctx, resellV2Client, tokenOpts)
+	token, err := authBySelectelTokenKeystoneToken(ctx, d, meta)
 	if err != nil {
 		return nil, diag.FromErr((errCreatingObject(objectToken, err)))
 	}

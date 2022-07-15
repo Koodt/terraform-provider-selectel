@@ -46,19 +46,24 @@ func getDBaaSV1Endpoint(region string) (endpoint string) {
 }
 
 func getDBaaSClient(ctx context.Context, d *schema.ResourceData, meta interface{}) (*dbaas.API, diag.Diagnostics) {
-	token, err := authBySelectelTokenKeystoneToken(ctx, d, meta)
-	if err != nil {
-		return nil, diag.FromErr((errCreatingObject(objectToken, err)))
-	}
+	config := meta.(*Config)
+	if config.selectel_token != "" {
+		token, err := authBySelectelTokenKeystoneToken(ctx, d, meta)
+		if err != nil {
+			return nil, diag.FromErr((errCreatingObject(objectToken, err)))
+		}
 
-	region := d.Get("region").(string)
-	endpoint := getDBaaSV1Endpoint(region)
-	client, err := dbaas.NewDBAASClient(token.ID, endpoint)
-	if err != nil {
-		return nil, diag.FromErr(err)
-	}
+		region := d.Get("region").(string)
+		endpoint := getDBaaSV1Endpoint(region)
+		client, err := dbaas.NewDBAASClient(token.ID, endpoint)
+		if err != nil {
+			return nil, diag.FromErr(err)
+		}
 
-	return client, nil
+		return client, nil
+	} else {
+		return nil, nil
+	}
 }
 
 func stringChecksum(s string) (string, error) {
